@@ -36,7 +36,9 @@ stopButton.addEventListener('click', () => {
 async function analyzeAudio(audioBuffer) {
   const model = new mm.OnsetsAndFrames();
 await model.initialize({
-  weightsManifestUrl: 'https://storage.googleapis.com/magentadata/js/checkpoints/onsets_frames_mel'
+  weightsManifestUrl: 'https://storage.googleapis.com/magentadata/js/checkpoints/transcription/onsets_frames_uni'
+});
+
 });
 
   const audioCtx = new AudioContext();

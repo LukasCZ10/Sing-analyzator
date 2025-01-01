@@ -35,17 +35,15 @@ stopButton.addEventListener('click', () => {
 // Funkce pro analýzu zvuku pomocí Magenta.js
 async function analyzeAudio(audioBuffer) {
   const model = new mm.OnsetsAndFrames();
-await model.initialize({
-  weightsManifestUrl: 'https://storage.googleapis.com/magentadata/js/checkpoints/transcription/onsets_frames_uni'
-});
-
-});
+  await model.initialize({
+    weightsManifestUrl: 'https://storage.googleapis.com/magentadata/js/checkpoints/transcription/onsets_frames_uni'
+  });
 
   const audioCtx = new AudioContext();
   const decodedAudio = await audioCtx.decodeAudioData(audioBuffer); // Dekóduje audio data
 
   const pianoRoll = await model.transcribeFromAudioBuffer(decodedAudio); // Analyzuje zvuk
-  output.textContent = `Analyzováno: ${pianoRoll.notes.length} not.`;
+  output.textContent = `Analyzováno: ${pianoRoll.notes.length} not.`; // Zobrazí počet not
 
   console.log('Výsledek analýzy:', pianoRoll); // Výsledek analýzy (seznam not)
 }
